@@ -5,6 +5,7 @@
     <style name="BaseAppTheme.Night" parent="BaseAppTheme">
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/lightDark</item>
+        <item name="colorSurface">@color/darkGrey</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
