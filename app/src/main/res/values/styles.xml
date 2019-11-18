@@ -12,8 +12,11 @@
         <item name="android:statusBarColor">?android:colorBackground</item>
         <item name="android:windowLightStatusBar">true</item>
 
+        <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button</item>
         <item name="bottomNavigationStyle">@style/Widget.Pokedex.BottomNavigationView</item>
         <item name="tabStyle">@style/Widget.Pokedex.TabLayout</item>
+        <!-- id/pasword -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
 
     </style>
 
