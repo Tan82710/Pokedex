@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.benjaminledet.pokedex.R
+import com.benjaminledet.pokedex.extensions.getAttributeFromAttr
 import com.benjaminledet.pokedex.manager.PreferencesManager
 import kotlinx.android.synthetic.main.fragment_account.*
 import org.koin.android.ext.android.inject
@@ -24,6 +25,7 @@ class AccountFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupThemeView()
+        //imageView.setBackgroundColor(requireContext().getAttributeFromAttr(R.attr.colorSecondary))
     }
 
     private fun setupThemeView() {
