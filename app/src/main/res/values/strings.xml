@@ -22,5 +22,6 @@
     <string name="theme_light">Clair</string>
     <string name="theme_dark">Foncé</string>
     <string name="theme_default">Automatique</string>
+    <string name="description">Description</string>
 
 </resources>

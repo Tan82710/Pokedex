@@ -11,7 +11,7 @@ import com.benjaminledet.pokedex.data.repository.utils.NetworkState
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 
-class PokemonsViewModel(application: Application): AndroidViewModel(application), KoinComponent {
+class  PokemonsViewModel(application: Application): AndroidViewModel(application), KoinComponent {
 
     private val repository by inject<PokemonRepository>()
 

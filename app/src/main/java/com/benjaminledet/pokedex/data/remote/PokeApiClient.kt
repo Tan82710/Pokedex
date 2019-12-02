@@ -23,6 +23,20 @@ class PokeApiClient: KoinComponent {
         return response.results.map { apiResourceResponseToPokemon(it) }
     }
 
+    //Charge les données en parallèle
+    suspend fun getMoves(list: List<String>): List<Move> {
+        return coroutineScope {
+        list.parallelMap(this) {name ->
+            val response = performRequest {
+                service.getMovesAsync(name)
+            }
+             moveResponseToMove(response)
+        }
+        }.toList()
+
+
+    }
+
     /**
      * Get a pokemon by its id
      */
@@ -91,9 +105,20 @@ class PokeApiClient: KoinComponent {
         detail = PokemonDetail(
             weight = pokemonResponse.weight / 10,
             height = pokemonResponse.height / 10,
-            types = pokemonResponse.types.mapNotNull { it.type.name }
+            types = pokemonResponse.types.mapNotNull { it.type.name },
+            moves = pokemonResponse.moves.mapNotNull { it.move.name }
         )
     )
+
+    private fun moveResponseToMove(moveResponse: MovesResponse) = Move(
+        id = moveResponse.id,
+        name = moveResponse.name,
+        type = moveResponse.type.name!!,
+        accuracy = moveResponse.accuracy,
+        power = moveResponse.power,
+        pp = moveResponse.pp
+    )
+
 
     private fun itemResponseToItem(itemResponse: ItemResponse, itemCategoryId: Int) = Item(
         id = itemResponse.id,
@@ -156,6 +181,7 @@ class PokeApiClient: KoinComponent {
     private fun getPokemonBeautifulIconUrl(id: Int?) = "$POKEMON_BEAUTIFUL_ICON_BASE_URL${String.format("%03d", id)}$ICON_EXTENSION"
 
     private fun getItemIconUrl(name: String?) = "$ITEM_ICON_BASE_URL$name$ICON_EXTENSION"
+
 
     companion object {
         private const val TAG = "PokeApiClient"

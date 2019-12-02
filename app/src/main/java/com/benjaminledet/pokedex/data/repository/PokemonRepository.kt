@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.toLiveData
+import com.benjaminledet.pokedex.data.local.dao.MoveDao
 import com.benjaminledet.pokedex.data.local.dao.PokemonDao
+import com.benjaminledet.pokedex.data.model.Move
 import com.benjaminledet.pokedex.data.model.Pokemon
 import com.benjaminledet.pokedex.data.remote.PokeApiClient
 import com.benjaminledet.pokedex.data.repository.utils.BoundaryCallback
@@ -22,6 +24,10 @@ class PokemonRepository: KoinComponent {
     private val pokemonDao by inject<PokemonDao>()
 
     private val pokeApiClient by inject<PokeApiClient>()
+
+    private  val moveDao by inject<MoveDao>()
+
+    fun getMovesobservable(names: List<String>)= moveDao.getAllObservable(names)
 
     fun getPokemonObservable(id: Int) = pokemonDao.getByIdObservable(id)
 
@@ -72,8 +78,17 @@ class PokemonRepository: KoinComponent {
         Log.v(TAG, "refresh pokemon: ${Status.RUNNING}")
         scope.launch {
             try {
+                //recup pokemon + insertion
                 val pokemon = pokeApiClient.getPokemonDetail(id)
                 insertPokemons(listOf(pokemon))
+                pokemon.detail?.moves?.let {list ->
+                    if (list.isNotEmpty()) {
+                        val moves = pokeApiClient.getMoves(list)
+                        insertMoves(moves)
+                    }
+                }
+
+
                 networkState.postValue(NetworkState.LOADED)
                 Log.v(TAG, "refresh pokemon: ${Status.SUCCESS}")
 
@@ -117,6 +132,12 @@ class PokemonRepository: KoinComponent {
         Log.v(TAG, "insert pokemons: $pokemons")
         pokemonDao.insert(pokemons)
     }
+
+    private suspend fun insertMoves(moves: List<Move>) {
+        Log.v(TAG, "insert pokemons: $Move")
+        moveDao.insert(moves)
+    }
+
 
     companion object {
         private const val TAG = "PokemonRepository"
