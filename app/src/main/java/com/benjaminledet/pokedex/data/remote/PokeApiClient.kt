@@ -113,7 +113,7 @@ class PokeApiClient: KoinComponent {
     private fun moveResponseToMove(moveResponse: MovesResponse) = Move(
         id = moveResponse.id,
         name = moveResponse.name,
-        type = moveResponse.type.name!!,
+        type = moveResponse.type.name?:"",
         accuracy = moveResponse.accuracy,
         power = moveResponse.power,
         pp = moveResponse.pp

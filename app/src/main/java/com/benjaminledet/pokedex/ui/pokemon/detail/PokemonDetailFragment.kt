@@ -35,7 +35,6 @@ class PokemonDetailFragment: Fragment() {
             activity?.title = pokemon?.name
             weight.text = getString(R.string.pokemon_weight, pokemon?.detail?.weight.toString())
             height.text = getString(R.string.pokemon_height, pokemon?.detail?.height.toString())
-            descrition.text = getString(R.string.description)
 
             Picasso.get().load(pokemon?.iconUrl).into(icon)
         })
