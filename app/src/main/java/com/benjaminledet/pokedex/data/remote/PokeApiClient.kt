@@ -37,6 +37,19 @@ class PokeApiClient: KoinComponent {
 
     }
 
+    suspend fun getCharacteristic(list: List<String>): List<Characteristic> {
+        return coroutineScope {
+            list.parallelMap(this) {name ->
+                val response = performRequest {
+                    service.getCharacteristicAsync(name)
+                }
+                characteristicResponseToCharacteristic(response)
+            }
+        }.toList()
+
+
+    }
+
     /**
      * Get a pokemon by its id
      */
@@ -106,7 +119,8 @@ class PokeApiClient: KoinComponent {
             weight = pokemonResponse.weight / 10,
             height = pokemonResponse.height / 10,
             types = pokemonResponse.types.mapNotNull { it.type.name },
-            moves = pokemonResponse.moves.mapNotNull { it.move.name }
+            moves = pokemonResponse.moves.mapNotNull { it.move.name },
+            descriptions = pokemonResponse.descriptions.mapNotNull { it.descriptions.description }
         )
     )
 
@@ -119,6 +133,10 @@ class PokeApiClient: KoinComponent {
         pp = moveResponse.pp
     )
 
+    private fun characteristicResponseToCharacteristic(characteristicResponse: CharacteristicResponse) = Characteristic(
+        id = characteristicResponse.id,
+        descriptions = characteristicResponse.descriptions
+    )
 
     private fun itemResponseToItem(itemResponse: ItemResponse, itemCategoryId: Int) = Item(
         id = itemResponse.id,

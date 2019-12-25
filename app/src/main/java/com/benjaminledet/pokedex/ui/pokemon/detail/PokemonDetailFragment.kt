@@ -11,7 +11,13 @@ import androidx.lifecycle.Observer
 import com.benjaminledet.pokedex.R
 import com.benjaminledet.pokedex.data.repository.utils.Status
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_pokemon_detail.*
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.*
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.content
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.height
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.icon
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.progressBar
+import kotlinx.android.synthetic.main.fragment_pokemon_detail.weight
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonDetailFragment: Fragment() {
@@ -41,6 +47,10 @@ class PokemonDetailFragment: Fragment() {
 
         viewModel.moves.observe(viewLifecycleOwner, Observer { moves ->
             Log.d("PokemonDetailActivity", "moves: $moves")
+        })
+
+        viewModel.descriptions.observe(viewLifecycleOwner, Observer { characteristic ->
+            Log.d("PokemonDetailActivity", "characteristic: $characteristic")
         })
     }
 }

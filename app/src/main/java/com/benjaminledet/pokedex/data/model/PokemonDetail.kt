@@ -14,7 +14,10 @@ data class PokemonDetail(
     val types: List<String>,
 
     @ColumnInfo(name = MOVES)
-    val moves : List<String>
+    val moves : List<String>,
+
+    @ColumnInfo(name = DESCRIPTIONS)
+    val descriptions : List<String>
 ) {
 
     companion object {
@@ -22,5 +25,6 @@ data class PokemonDetail(
         const val HEIGHT = "height"
         const val TYPES = "types"
         const val MOVES = "moves"
+        const val DESCRIPTIONS = "descriptions"
     }
 }

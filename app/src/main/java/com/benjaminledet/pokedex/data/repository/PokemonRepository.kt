@@ -5,9 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.toLiveData
+import com.benjaminledet.pokedex.data.local.dao.CharacteristicDao
 import com.benjaminledet.pokedex.data.local.dao.MoveDao
 import com.benjaminledet.pokedex.data.local.dao.PokemonDao
 import com.benjaminledet.pokedex.data.model.Move
+import com.benjaminledet.pokedex.data.model.Characteristic
 import com.benjaminledet.pokedex.data.model.Pokemon
 import com.benjaminledet.pokedex.data.remote.PokeApiClient
 import com.benjaminledet.pokedex.data.repository.utils.BoundaryCallback
@@ -25,7 +27,11 @@ class PokemonRepository: KoinComponent {
 
     private val pokeApiClient by inject<PokeApiClient>()
 
-    private  val moveDao by inject<MoveDao>()
+    private val moveDao by inject<MoveDao>()
+
+    private val characteristicDao by inject<CharacteristicDao>()
+
+    fun getCharacteristicObservable(descriptions: List<String>) = characteristicDao.getAllObservable(descriptions)
 
     fun getMovesobservable(names: List<String>)= moveDao.getAllObservable(names)
 
@@ -87,6 +93,12 @@ class PokemonRepository: KoinComponent {
                         insertMoves(moves)
                     }
                 }
+                pokemon.detail?.descriptions?.let {list ->
+                    if (list.isNotEmpty()) {
+                        val characteristics = pokeApiClient.getCharacteristic(list)
+                        insertCharacteristic(characteristics)
+                    }
+                }
 
 
                 networkState.postValue(NetworkState.LOADED)
@@ -136,6 +148,11 @@ class PokemonRepository: KoinComponent {
     private suspend fun insertMoves(moves: List<Move>) {
         Log.v(TAG, "insert pokemons: $Move")
         moveDao.insert(moves)
+    }
+
+    private suspend fun insertCharacteristic(characteristic: List<Characteristic>) {
+        Log.v(TAG, "insert pokemons: $Characteristic")
+        characteristicDao.insert(characteristic)
     }
 
 
