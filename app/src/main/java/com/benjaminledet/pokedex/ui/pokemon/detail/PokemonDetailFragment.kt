@@ -19,6 +19,8 @@ import kotlinx.android.synthetic.main.fragment_pokemon_detail.icon
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.progressBar
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.weight
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.lang.Math.random
+import kotlin.random.Random
 
 class PokemonDetailFragment: Fragment() {
 
@@ -45,12 +47,15 @@ class PokemonDetailFragment: Fragment() {
             Picasso.get().load(pokemon?.iconUrl).into(icon)
         })
 
-        viewModel.moves.observe(viewLifecycleOwner, Observer { moves ->
-            Log.d("PokemonDetailActivity", "moves: $moves")
-        })
 
-        viewModel.descriptions.observe(viewLifecycleOwner, Observer { characteristic ->
-            Log.d("PokemonDetailActivity", "characteristic: $characteristic")
+        viewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
+            //Log.d("PokemonDetailActivity", "moves: $moves")
+
+            val randMoves = List(4) { Random.nextInt(moves.id) }
+            println(randMoves)
+
+            moves.text = pokemon?.detail?.moves.toString()
         })
+        
     }
 }

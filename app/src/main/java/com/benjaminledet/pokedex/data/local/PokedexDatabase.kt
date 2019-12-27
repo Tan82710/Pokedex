@@ -9,7 +9,7 @@ import com.benjaminledet.pokedex.data.model.*
 
 @Database(
     entities = [
-        Pokemon::class, Item::class, ItemPocket::class, ItemCategory::class, Move::class, Characteristic::class
+        Pokemon::class, Item::class, ItemPocket::class, ItemCategory::class, Move::class
     ],
     version = PokedexDatabase.VERSION, exportSchema = true
 )
@@ -26,7 +26,6 @@ abstract class PokedexDatabase: RoomDatabase() {
 
     abstract fun moveDao(): MoveDao
 
-    abstract fun characteristicDao(): CharacteristicDao
 
     companion object {
         const val DATABASE_NAME = "PokedexDatabase"

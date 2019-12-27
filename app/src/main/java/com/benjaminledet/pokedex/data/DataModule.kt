@@ -29,7 +29,6 @@ val dataModule = module {
 
     single { get<PokedexDatabase>().moveDao() }
 
-    single { get<PokedexDatabase>().characteristicDao() }
 
     //endregion
 

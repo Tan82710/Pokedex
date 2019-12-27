@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "dc8734e96928d53bb705ebd4fde3e01f",
+    "identityHash": "54db50772e1ccf7336d2e8a1791243ee",
     "entities": [
       {
         "tableName": "Pokemon",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `iconUrl` TEXT, `weight` REAL, `height` REAL, `types` TEXT, `moves` TEXT, `descriptions` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `iconUrl` TEXT, `weight` REAL, `height` REAL, `types` TEXT, `moves` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -47,12 +47,6 @@
           {
             "fieldPath": "detail.moves",
             "columnName": "moves",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "detail.descriptions",
-            "columnName": "descriptions",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -247,38 +241,12 @@
         },
         "indices": [],
         "foreignKeys": []
-      },
-      {
-        "tableName": "Characteristic",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `descriptions` TEXT NOT NULL, PRIMARY KEY(`id`))",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "descriptions",
-            "columnName": "descriptions",
-            "affinity": "TEXT",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": false
-        },
-        "indices": [],
-        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dc8734e96928d53bb705ebd4fde3e01f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '54db50772e1ccf7336d2e8a1791243ee')"
     ]
   }
 }
