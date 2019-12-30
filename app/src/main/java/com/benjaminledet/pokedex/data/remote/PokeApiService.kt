@@ -32,6 +32,8 @@ interface PokeApiService {
     @GET("move/{name}")
     suspend fun getMovesAsync(@Path("name") name: String): Response<MovesResponse>
 
+    @GET("stat/{name}")
+    suspend fun getStatsAsync(@Path("name") name: String): Response<StatResponse>
 
 
     companion object {

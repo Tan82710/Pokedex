@@ -29,6 +29,8 @@ val dataModule = module {
 
     single { get<PokedexDatabase>().moveDao() }
 
+    single { get<PokedexDatabase>().statDao() }
+
 
     //endregion
 

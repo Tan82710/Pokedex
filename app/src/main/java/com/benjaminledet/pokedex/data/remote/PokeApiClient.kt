@@ -37,6 +37,16 @@ class PokeApiClient: KoinComponent {
 
     }
 
+    suspend fun getStats(list: List<String>): List<Stat> {
+        return coroutineScope {
+            list.parallelMap(this) {name ->
+                val response = performRequest {
+                    service.getStatsAsync(name)
+                }
+                statResponseToStat(response)
+            }
+        }.toList()
+    }
 
     /**
      * Get a pokemon by its id
@@ -107,8 +117,15 @@ class PokeApiClient: KoinComponent {
             weight = pokemonResponse.weight / 10,
             height = pokemonResponse.height / 10,
             types = pokemonResponse.types.mapNotNull { it.type.name },
-            moves = pokemonResponse.moves.mapNotNull { it.move.name }
+            moves = pokemonResponse.moves.mapNotNull { it.move.name },
+            stats = pokemonResponse.stats.mapNotNull { it.stat.name }
         )
+    )
+
+    private fun statResponseToStat(statResponse: StatResponse) = Stat(
+        id = statResponse.id,
+        name = statResponse.name,
+        game_index = statResponse.game_index
     )
 
     private fun moveResponseToMove(moveResponse: MovesResponse) = Move(

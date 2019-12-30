@@ -21,6 +21,10 @@ class PokemonDetailViewModel(application: Application): AndroidViewModel(applica
         pokemonRepository.getMovesobservable(pokemon?.detail?.moves ?: listOf())
     }
 
+    val stats = pokemon.switchMap { pokemon ->
+        pokemonRepository.getStatsobservable(pokemon?.detail?.stats ?: listOf())
+    }
+
     val refreshState = pokemonId.switchMap { id -> pokemonRepository.refreshPokemon(viewModelScope, id) }
 
 }

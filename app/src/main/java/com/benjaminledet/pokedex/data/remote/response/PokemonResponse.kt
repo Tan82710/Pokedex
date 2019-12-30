@@ -25,8 +25,8 @@ data class PokemonResponse(
     @SerializedName("moves")
     val moves: List<PokemonMoveResponse>,
 
-    @SerializedName("descriptions")
-    val descriptions: List<PokemonCharacteristicResponse>
+    @SerializedName("stats")
+    val stats: List<PokemonStatResponse>
 
 
 ) {
@@ -51,7 +51,14 @@ data class PokemonMoveResponse(
     val move: ApiResourceResponse
 )
 
-data class PokemonCharacteristicResponse(
-    @SerializedName("descriptions")
-    val descriptions: ApiResourceResponse
+data class PokemonStatResponse(
+
+    @SerializedName("base_stat")
+    val base_stat: Int,
+
+    @SerializedName("effort")
+    val effort: Int,
+
+    @SerializedName("stat")
+    val stat: ApiResourceResponse
 )

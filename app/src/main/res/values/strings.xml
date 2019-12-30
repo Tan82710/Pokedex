@@ -24,5 +24,6 @@
     <string name="theme_default">Automatique</string>
     <string name="moves">Moves</string>
     <string name="stat">Stats de base</string>
+    <string name="types">Types</string>
 
 </resources>

@@ -8,9 +8,5 @@ data class ApiResourceResponse(
     val name: String?,
 
     @SerializedName("url")
-    val url: String?,
-
-    @SerializedName("description")
-    val description: String?
-
+    val url: String?
 )

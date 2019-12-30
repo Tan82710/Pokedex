@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_pokemon_detail.height
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.icon
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.progressBar
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.weight
+import kotlinx.android.synthetic.main.item_item.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.Math.random
 import kotlin.random.Random
@@ -53,8 +54,16 @@ class PokemonDetailFragment: Fragment() {
 
             val randMoves = List(4) { Random.nextInt(moves.id) }
             println(randMoves)
-
+            println(moves.name)
             moves.text = pokemon?.detail?.moves.toString()
+            type.text = pokemon?.detail?.types.toString()
+
+        })
+
+        viewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
+            println(stat.name)
+            stat.text = pokemon?.detail?.stats.toString()
+
         })
         
     }

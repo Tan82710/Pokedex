@@ -7,8 +7,10 @@ import androidx.lifecycle.Transformations
 import androidx.paging.toLiveData
 import com.benjaminledet.pokedex.data.local.dao.MoveDao
 import com.benjaminledet.pokedex.data.local.dao.PokemonDao
+import com.benjaminledet.pokedex.data.local.dao.StatDao
 import com.benjaminledet.pokedex.data.model.Move
 import com.benjaminledet.pokedex.data.model.Pokemon
+import com.benjaminledet.pokedex.data.model.Stat
 import com.benjaminledet.pokedex.data.remote.PokeApiClient
 import com.benjaminledet.pokedex.data.repository.utils.BoundaryCallback
 import com.benjaminledet.pokedex.data.repository.utils.Listing
@@ -26,6 +28,10 @@ class PokemonRepository: KoinComponent {
     private val pokeApiClient by inject<PokeApiClient>()
 
     private val moveDao by inject<MoveDao>()
+
+    private val statDao by inject<StatDao>()
+
+    fun getStatsobservable(names: List<String>)= statDao.getAllObservable(names)
 
     fun getMovesobservable(names: List<String>)= moveDao.getAllObservable(names)
 
@@ -88,6 +94,13 @@ class PokemonRepository: KoinComponent {
                     }
                 }
 
+                pokemon.detail?.stats?.let {list ->
+                    if (list.isNotEmpty()) {
+                        val stats = pokeApiClient.getStats(list)
+                        insertStats(stats)
+                    }
+                }
+
                 networkState.postValue(NetworkState.LOADED)
                 Log.v(TAG, "refresh pokemon: ${Status.SUCCESS}")
 
@@ -135,6 +148,11 @@ class PokemonRepository: KoinComponent {
     private suspend fun insertMoves(moves: List<Move>) {
         Log.v(TAG, "insert pokemons: $Move")
         moveDao.insert(moves)
+    }
+
+    private suspend fun insertStats(stats: List<Stat>) {
+        Log.v(TAG, "insert pokemons: $Stat")
+        statDao.insert(stats)
     }
 
 

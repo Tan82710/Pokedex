@@ -14,7 +14,12 @@ data class PokemonDetail(
     val types: List<String>,
 
     @ColumnInfo(name = MOVES)
-    val moves : List<String>
+    val moves : List<String>,
+
+    @ColumnInfo(name = STATS)
+    val stats : List<String>
+
+
 
 ) {
 
@@ -23,5 +28,6 @@ data class PokemonDetail(
         const val HEIGHT = "height"
         const val TYPES = "types"
         const val MOVES = "moves"
+        const val STATS = "stats"
     }
 }

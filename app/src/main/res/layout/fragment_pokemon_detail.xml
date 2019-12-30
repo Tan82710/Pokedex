@@ -71,10 +71,12 @@
                     android:id="@+id/type"
                     android:layout_width="192dp"
                     android:layout_height="37dp"
-                    android:text="TextView"
+                    android:gravity="center"
+                    android:text="@string/types"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/icon"
-                    tools:layout_editor_absoluteY="19dp" />
+                    tools:layout_editor_absoluteY="19dp"
+                    android:textAppearance="?textAppearanceHeadline4"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -117,11 +119,12 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/stat"
-                            android:textAppearance="?textAppearanceHeadline3"
-                            android:layout_gravity="center_horizontal"/>
+                        android:id="@+id/stat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/stat"
+                        android:textAppearance="?textAppearanceHeadline3" />
 
                 </com.google.android.material.card.MaterialCardView>
 
