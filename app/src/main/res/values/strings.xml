@@ -23,7 +23,10 @@
     <string name="theme_dark">Foncé</string>
     <string name="theme_default">Automatique</string>
     <string name="moves">Moves</string>
-    <string name="stat">Stats de base</string>
+    <string name="stat">Stat</string>
     <string name="types">Types</string>
+    <string name="valeurs"> Valeur %1$s </string>
+    <string name="statsBase"> Stats de base </string>
+    <string name="randomMoves"> Attaques </string>
 
 </resources>

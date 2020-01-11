@@ -17,6 +17,10 @@ interface PokeApiService {
     @GET("pokemon/{id}")
     suspend fun getPokemonAsync(@Path("id") id: Int): Response<PokemonResponse>
 
+    //Pour la récupération de la valeur du stat de base
+    @GET("pokemon/{id}")
+    suspend fun getPokemonStatAsync(@Path("id") id: Int): Response<PokemonStatResponse>
+
     @GET("item/{name}")
     suspend fun getitemAsync(@Path("name") name: String): Response<ItemResponse>
 

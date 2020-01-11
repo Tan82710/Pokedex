@@ -37,7 +37,7 @@ data class Move(
         const val TABLE_NAME = "Move"
         const val ID = "id"
         const val NAME = "name"
-        const val  TYPE = "type"
+        const val TYPE = "type"
         const val ACCURENCY = "accurency"
         const val POWER = "power"
         const val PP = "pp"

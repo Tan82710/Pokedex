@@ -55,6 +55,10 @@ class PokeApiClient: KoinComponent {
         val response = performRequest {
             service.getPokemonAsync(id)
         }
+        /*val statResponse = performRequest {
+            service.getPokemonStatAsync(id)
+        }*/
+
         return pokemonResponseToPokemon(response)
     }
     /**
@@ -116,6 +120,7 @@ class PokeApiClient: KoinComponent {
         detail = PokemonDetail(
             weight = pokemonResponse.weight / 10,
             height = pokemonResponse.height / 10,
+            //base_stat = pokemonStatResponse.base_stat,
             types = pokemonResponse.types.mapNotNull { it.type.name },
             moves = pokemonResponse.moves.mapNotNull { it.move.name },
             stats = pokemonResponse.stats.mapNotNull { it.stat.name }

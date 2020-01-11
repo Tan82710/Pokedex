@@ -43,13 +43,13 @@ class PokemonsContentFragment: Fragment() {
                 })
 
                 onClick = { pokemon ->
-                    parentFragment?.findNavController()?.navigate(
-                        R.id.pokemonContainer_to_pokemonDetail,
-                        bundleOf("pokemonId" to pokemon.id)
-                    )
-                }
+                parentFragment?.findNavController()?.navigate(
+                    R.id.action_pokemonsContainer_to_pokemonDetailActivity,
+                    bundleOf("pokemonId" to pokemon.id)
+                )
             }
-            recyclerView.adapter = adapter
+        }
+        recyclerView.adapter = adapter
 
         } else {
 

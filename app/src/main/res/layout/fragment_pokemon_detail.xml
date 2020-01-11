@@ -34,6 +34,17 @@
                     app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintVertical_bias="1.0" tools:ignore="DuplicateIds">
 
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:ellipsize="end"
+                    android:text="@string/types"
+                    android:textAppearance="?textAppearanceHeadline4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icon"
+                    tools:layout_editor_absoluteY="16dp" />
 
                 <ImageView
                         android:id="@+id/icon"
@@ -66,18 +77,6 @@
                         android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:textAppearance="?textAppearanceHeadline5"/>
-
-                <TextView
-                    android:id="@+id/type"
-                    android:layout_width="192dp"
-                    android:layout_height="37dp"
-                    android:gravity="center"
-                    android:text="@string/types"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/icon"
-                    tools:layout_editor_absoluteY="19dp"
-                    android:textAppearance="?textAppearanceHeadline4"/>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -99,14 +98,17 @@
                         android:focusable="true"
                         android:minHeight="118dp" tools:ignore="DuplicateIds,MissingConstraints"
                         android:id="@+id/materialCardView" android:layout_marginTop="8dp"
-                        app:layout_constraintTop_toTopOf="parent">>
-                    <TextView
-                            android:id="@+id/moves"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/moves"
-                            android:textAppearance="?textAppearanceHeadline3"
-                            android:layout_gravity="center_horizontal"/>
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/moves"
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:text="@string/moves" />
+
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -118,13 +120,14 @@
                         android:id="@+id/materialCardView" android:layout_marginTop="8dp"
                         app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/stat"
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/stat"
-                        android:textAppearance="?textAppearanceHeadline3" />
+                        android:layout_height="match_parent" />
+
+
 
                 </com.google.android.material.card.MaterialCardView>
 
