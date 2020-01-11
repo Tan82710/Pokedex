@@ -30,6 +30,6 @@ data class PokemonDetail(
         const val TYPES = "types"
         const val MOVES = "moves"
         const val STATS = "stats"
-        //const val BASE_STAT = "base_stat"
+
     }
 }

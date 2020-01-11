@@ -48,6 +48,14 @@ class PokeApiClient: KoinComponent {
         }.toList()
     }
 
+    /*suspend fun getBaseStat(id: Int): PokemonDetail {
+                val response = performRequest {
+                    service.getPokemonStatAsync(id)
+                }
+                return pokemonResponseToPokemon(response)
+            }*/
+
+
     /**
      * Get a pokemon by its id
      */

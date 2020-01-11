@@ -40,6 +40,10 @@ class PokemonDetailActivity: AppCompatActivity() {
             height.text = getString(R.string.pokemon_height, pokemon?.detail?.height.toString())
 
             type.text = pokemon?.detail?.types.toString()
+            //type.setBackgroundColor(getTypeColor(pokemon?.detail?.types.toString()))
+
+            val backColor = getTypeColor(pokemon?.detail?.types?.first())
+            window.decorView.setBackgroundColor(backColor)
 
             /*val randMoves = List(4) { Random.nextInt(moves.id) }
             val attak = pokemon?.detail?.moves
@@ -75,6 +79,30 @@ class PokemonDetailActivity: AppCompatActivity() {
             true
         }
         else -> true
+    }
+
+    fun getTypeColor(type: String?): Int {
+        return when(type) {
+            "normal"    -> getColor(R.color.normal)
+            "fire"      -> getColor(R.color.fire)
+            "water"     -> getColor(R.color.water)
+            "grass"     -> getColor(R.color.grass)
+            "electric"  -> getColor(R.color.electric)
+            "ice"       -> getColor(R.color.ice)
+            "fighting"  -> getColor(R.color.fighting)
+            "poison"    -> getColor(R.color.poison)
+            "ground"    -> getColor(R.color.ground)
+            "flying"    -> getColor(R.color.flying)
+            "psychic"   -> getColor(R.color.Psychic)
+            "bug"       -> getColor(R.color.bug)
+            "rock"      -> getColor(R.color.rock)
+            "ghost"     -> getColor(R.color.ghost)
+            "dragon"    -> getColor(R.color.dragon)
+            "dark"      -> getColor(R.color.dark)
+            "steel"     -> getColor(R.color.steel)
+            "fairy"     -> getColor(R.color.fairy)
+            else -> -1
+        }
     }
 
 }

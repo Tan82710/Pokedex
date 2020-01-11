@@ -9,4 +9,24 @@
     <color name="lightDark">#212121</color>
     <color name="darkGrey">#1b1b1b</color>
 
+    <!-- Pokemon Type Color -->
+    <color name="normal">#C0AF65</color>
+    <color name="fire">#EA360F</color>
+    <color name="water">#496BF4</color>
+    <color name="grass">#33B512</color>
+    <color name="electric">#E4F21D</color>
+    <color name="ice">#09F8EA</color>
+    <color name="fighting">#9A4D14</color>
+    <color name="poison">#AD0AC1</color>
+    <color name="ground">#D49501</color>
+    <color name="flying">#BFCEED</color>
+    <color name="Psychic">#FF00CB</color>
+    <color name="bug">#A6B91A</color>
+    <color name="rock">#763F06</color>
+    <color name="ghost">#D2D2D2</color>
+    <color name="dragon">#884BD7</color>
+    <color name="dark">#5A5363</color>
+    <color name="steel">#66636A</color>
+    <color name="fairy">#FF66F3</color>
+
 </resources>

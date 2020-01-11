@@ -98,6 +98,7 @@ class PokemonRepository: KoinComponent {
                     if (list.isNotEmpty()) {
                         val stats = pokeApiClient.getStats(list)
                         insertStats(stats)
+                        val base_stat = pokeApiClient
                     }
                 }
 

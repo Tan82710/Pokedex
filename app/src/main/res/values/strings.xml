@@ -25,7 +25,7 @@
     <string name="moves">Moves</string>
     <string name="stat">Stat</string>
     <string name="types">Types</string>
-    <string name="valeurs"> Valeur %1$s </string>
+    <string name="valeurs"> Valeur </string>
     <string name="statsBase"> Stats de base </string>
     <string name="randomMoves"> Attaques </string>
 
