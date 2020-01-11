@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.benjaminledet.pokedex.R
+import com.benjaminledet.pokedex.data.model.Move
 import com.benjaminledet.pokedex.data.model.Stat
 import com.benjaminledet.pokedex.ui.pokemon.detail.PokemonDetailActivity
 
@@ -30,6 +31,7 @@ class PokemonDetailAdapter(private val stats: List<Stat>, val callback: PokemonD
         val stat = stats[position]
         println("Stats :" + stat.name)
         layout.findViewById<TextView>(R.id.stat).text = stat.name
+
 
     }
 }
